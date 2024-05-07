@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+  @apply bg-green-100 scroll-smooth;
+}
+
+@layer components {
+  .btn {
+    @apply bg-theme rounded-full px-8 py-2 text-base font-medium uppercase text-white
+  }
+}
+
+@layer utilities {
+  .container {
+    @apply max-w-7xl mx-auto px-5
+  }
+}

@@ -28,9 +28,16 @@ const config: Config = {
             transform: "rotate(360deg)",
           },
         },
+
+        scroll: {
+          to: {
+            transform: "translate(calc(-50% - 0.6rem))",
+          },
+        },
       },
       animation: {
         rotate: "rotate 5s linear infinite forwards",
+        scroll: "scroll 60s linear infinite forwards",
       },
 
       screens: {
@@ -42,7 +49,7 @@ const config: Config = {
 
         lg: { max: "1023px" },
         // => @media (max-width: 1023px) { ... }
-
+        ls: { max: "960px" },
         md: { max: "767px" },
         // => @media (max-width: 767px) { ... }
 

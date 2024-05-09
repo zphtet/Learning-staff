@@ -20,13 +20,14 @@ const Navlinks = () => {
     <div
       className={twMerge(
         "flex items-center gap-12 transition-all ",
-        change && "rounded-full gap-4 bg-white py-1.5 pl-8 pr-2",
+        change &&
+          "gap-4 rounded-full bg-white py-1.5 pl-8 pr-2 md:gap-0 md:bg-transparent",
       )}
     >
       <ul
         className={twMerge(
-          `flex items-center  gap-8 font-bold uppercase transition-all md:hidden `,
-          change && "gap-4 ",
+          `flex items-center  gap-12 font-bold uppercase transition-all md:hidden `,
+          change && "gap-4 md:hidden",
         )}
       >
         <li>About Us</li>

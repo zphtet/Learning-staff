@@ -6,6 +6,7 @@ import Header from "./sections/header";
 const inter = Oswald({
   subsets: ["latin"],
   weight: ["400", "200", "300", "500", "600", "700"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {

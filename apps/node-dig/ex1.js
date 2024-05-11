@@ -9,6 +9,7 @@ const path = require("path");
 const fs = require("fs");
 const { error } = require("console");
 const getStdin = require("get-stdin");
+// require("dotenv").config();
 const args = require("minimist")(process.argv.slice(2), {
   boolean: ["watch", "in"],
   string: "foo",
@@ -66,3 +67,7 @@ function processFile(filePath) {
 
 // cmd
 // cat hello.txt | node ex1.js --in
+
+if (process.env.HELLO) {
+  console.log(process.env.HELLO);
+}

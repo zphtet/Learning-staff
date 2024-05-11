@@ -31,13 +31,27 @@ const config: Config = {
 
         scroll: {
           to: {
-            transform: "translate(calc(-50% - 0.6rem))",
+            transform: "translate(calc(-50% - 10px))",
+          },
+        },
+
+        scrollLeft: {
+          to: {
+            transform: "translate(calc(-50% - 10px))",
+          },
+        },
+
+        scrollRight: {
+          to: {
+            transform: "translate(10px)",
           },
         },
       },
       animation: {
         rotate: "rotate 5s linear infinite forwards",
         scroll: "scroll 60s linear infinite forwards",
+        "scroll-left": "scrollLeft 20s linear infinite forwards",
+        "scroll-right": "scrollRight 20s linear infinite forwards",
       },
 
       screens: {

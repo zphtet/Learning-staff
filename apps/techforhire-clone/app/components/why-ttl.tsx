@@ -11,7 +11,7 @@ const WhyTitle = () => {
         employers and
         <img
           src="./assets/round-2.png"
-          className="ls:h-[40px] ls:w-[40px] mx-4 -mt-4 inline-block h-[60px] w-[60px] rounded-full md:!-mt-2 md:!h-[30px]"
+          className="ls:h-[40px] ls:w-[40px] mx-4 -mt-4 inline-block h-[60px] w-[60px] rounded-full md:!-mt-2 md:!h-[30px] md:!w-[30px]"
           alt="round two"
         />
         developers together to build

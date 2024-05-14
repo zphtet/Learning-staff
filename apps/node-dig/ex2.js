@@ -40,6 +40,10 @@ if (args.in) {
 
 function processStream(inStream) {
   let inputStream = inStream;
+
+  if(args.uncompress){
+     inputStream = inputStream.pipe(zlib.createGunzip())
+  }
   const transformStream = new Transform({
     transform(chunk, encoding, callback) {
       this.push(chunk.toString().toUpperCase());

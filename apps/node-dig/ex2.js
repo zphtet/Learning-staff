@@ -19,6 +19,14 @@ console.log("args", args);
 
 let OUTPUT = path.join(__dirname, 'out.txt')
 
+const streamEnd = (stream)=>{
+   return new Promise((res)=>{
+       stream.on('end',()=>{
+          res();
+       })
+   })
+}
+
 if (args.watch) {
   console.log("You are running in watch mode");
 }
@@ -26,19 +34,19 @@ if (args.watch) {
 if (args.file) {
   const filePath = path.resolve(args.file);
   const stream = fs.createReadStream(filePath);
-  processStream(stream);
+  processStream(stream).then(()=> console.log('\nComplete Process Stream')).catch(err=> console.log('Error'));
 }
 
 // when stdin
 if (args.in) {
   // process.stdout.write("Stdinput ");
   // getStdin().then(logWithUppercase).catch(error);
-  processStream(process.stdin);
+  processStream(process.stdin).then(()=> console.log("complete"));
 }
 
 
 
-function processStream(inStream) {
+async function processStream(inStream) {
   let inputStream = inStream;
 
   if(args.uncompress){
@@ -68,4 +76,5 @@ function processStream(inStream) {
   }
 
   inputStream.pipe(outputStream);
+  await streamEnd(inputStream);
 }

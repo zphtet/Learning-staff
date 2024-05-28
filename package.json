@@ -28,6 +28,7 @@
     "get-stdin": "^8.0.0",
     "lucide-react": "^0.378.0",
     "minimist": "^1.2.8",
-    "tailwind-merge": "^2.3.0"
+    "tailwind-merge": "^2.3.0",
+    "ts-node": "^10.9.2"
   }
 }

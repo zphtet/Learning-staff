@@ -1,0 +1,520 @@
+{
+  "contacts": [
+    {
+      "id": "1",
+      "name": "name one",
+      "email": "nameone@example.com",
+      "favourite": true
+    },
+    {
+      "id": "a4f6",
+      "name": "mgmg",
+      "email": "mgmg@gmai.com",
+      "favourite": false
+    },
+    {
+      "id": "0ca2",
+      "name": "jina",
+      "email": "jina@gmail.com",
+      "favourite": false
+    },
+    {
+      "id": "8fec",
+      "name": "Aung",
+      "email": "aungaung@gmail.com",
+      "favourite": true
+    },
+    {
+      "id": "9cec",
+      "name": "something is missing",
+      "email": "iwant@gmail.com"
+    },
+    {
+      "id": "2ad5",
+      "name": "zinpaiji",
+      "email": "zph@gmail.com",
+      "favourite": true
+    },
+    {
+      "id": "3b1f",
+      "name": "John Doe",
+      "email": "john.doe@example.com",
+      "favourite": true
+    },
+    {
+      "id": "5d3a",
+      "name": "Albert Johnson",
+      "email": "albert.johnson@example.com"
+    },
+    {
+      "id": "7f5c",
+      "name": "Michael Brown",
+      "email": "michael.brown@example.com"
+    },
+    {
+      "id": "8g6d",
+      "name": "Sarah Wilson",
+      "email": "sarah.wilson@example.com"
+    },
+    {
+      "id": "9h7e",
+      "name": "David Lee",
+      "email": "david.lee@example.com"
+    },
+    {
+      "id": "10i8f",
+      "name": "Laura Martinez",
+      "email": "laura.martinez@example.com"
+    },
+    {
+      "id": "11j9g",
+      "name": "Daniel Garcia",
+      "email": "daniel.garcia@example.com"
+    },
+    {
+      "id": "12k0h",
+      "name": "Jessica Clark",
+      "email": "jessica.clark@example.com"
+    },
+    {
+      "id": "13l1i",
+      "name": "Matthew Lewis",
+      "email": "matthew.lewis@example.com"
+    },
+    {
+      "id": "14m2j",
+      "name": "Sophia Walker",
+      "email": "sophia.walker@example.com"
+    },
+    {
+      "id": "15n3k",
+      "name": "James Hall",
+      "email": "james.hall@example.com"
+    },
+    {
+      "id": "16o4l",
+      "name": "Olivia Allen",
+      "email": "olivia.allen@example.com"
+    },
+    {
+      "id": "17p5m",
+      "name": "Benjamin Young",
+      "email": "benjamin.young@example.com"
+    },
+    {
+      "id": "18q6n",
+      "name": "Amelia Hernandez",
+      "email": "amelia.hernandez@example.com"
+    },
+    {
+      "id": "19r7o",
+      "name": "Mason King",
+      "email": "mason.king@example.com"
+    },
+    {
+      "id": "20s8p",
+      "name": "Mia Wright",
+      "email": "mia.wright@example.com"
+    },
+    {
+      "id": "21t9q",
+      "name": "Elijah Lopez",
+      "email": "elijah.lopez@example.com"
+    },
+    {
+      "id": "22u0r",
+      "name": "Harper Green",
+      "email": "harper.green@example.com"
+    },
+    {
+      "id": "23v1s",
+      "name": "Lucas Hill",
+      "email": "lucas.hill@example.com"
+    },
+    {
+      "id": "24w2t",
+      "name": "Avery Scott",
+      "email": "avery.scott@example.com"
+    },
+    {
+      "id": "25x3u",
+      "name": "Jack Adams",
+      "email": "jack.adams@example.com"
+    },
+    {
+      "id": "26y4v",
+      "name": "Ella Baker",
+      "email": "ella.baker@example.com"
+    },
+    {
+      "id": "27z5w",
+      "name": "Liam Mitchell",
+      "email": "liam.mitchell@example.com"
+    },
+    {
+      "id": "28a6x",
+      "name": "Aubrey Gonzalez",
+      "email": "aubrey.gonzalez@example.com"
+    },
+    {
+      "id": "29b7y",
+      "name": "Henry Perez",
+      "email": "henry.perez@example.com"
+    },
+    {
+      "id": "30c8z",
+      "name": "Evelyn Roberts",
+      "email": "evelyn.roberts@example.com"
+    },
+    {
+      "id": "31d9a",
+      "name": "Alexander Turner",
+      "email": "alexander.turner@example.com"
+    },
+    {
+      "id": "32e0b",
+      "name": "Scarlett Phillips",
+      "email": "scarlett.phillips@example.com"
+    },
+    {
+      "id": "33f1c",
+      "name": "Sebastian Campbell",
+      "email": "sebastian.campbell@example.com"
+    },
+    {
+      "id": "34g2d",
+      "name": "Chloe Parker",
+      "email": "chloe.parker@example.com"
+    },
+    {
+      "id": "35h3e",
+      "name": "Aiden Evans",
+      "email": "aiden.evans@example.com"
+    },
+    {
+      "id": "36i4f",
+      "name": "Ariana Edwards",
+      "email": "ariana.edwards@example.com"
+    },
+    {
+      "id": "37j5g",
+      "name": "Logan Collins",
+      "email": "logan.collins@example.com"
+    },
+    {
+      "id": "38k6h",
+      "name": "Grace Stewart",
+      "email": "grace.stewart@example.com"
+    },
+    {
+      "id": "39l7i",
+      "name": "Julian Morris",
+      "email": "julian.morris@example.com"
+    },
+    {
+      "id": "40m8j",
+      "name": "Layla Rogers",
+      "email": "layla.rogers@example.com"
+    },
+    {
+      "id": "41n9k",
+      "name": "Isaac Reed",
+      "email": "isaac.reed@example.com"
+    },
+    {
+      "id": "42o0l",
+      "name": "Hannah Cook",
+      "email": "hannah.cook@example.com"
+    },
+    {
+      "id": "43p1m",
+      "name": "Dylan Morgan",
+      "email": "dylan.morgan@example.com"
+    },
+    {
+      "id": "44q2n",
+      "name": "Zoey Bell",
+      "email": "zoey.bell@example.com"
+    },
+    {
+      "id": "45r3o",
+      "name": "Nathan Murphy",
+      "email": "nathan.murphy@example.com"
+    },
+    {
+      "id": "46s4p",
+      "name": "Aria Bailey",
+      "email": "aria.bailey@example.com"
+    },
+    {
+      "id": "47t5q",
+      "name": "Carter Rivera",
+      "email": "carter.rivera@example.com"
+    },
+    {
+      "id": "48u6r",
+      "name": "Zoe Cooper",
+      "email": "zoe.cooper@example.com"
+    },
+    {
+      "id": "49v7s",
+      "name": "Owen Richardson",
+      "email": "owen.richardson@example.com"
+    },
+    {
+      "id": "50w8t",
+      "name": "Penelope Cox",
+      "email": "penelope.cox@example.com"
+    },
+    {
+      "id": "51x9u",
+      "name": "Luke Howard",
+      "email": "luke.howard@example.com"
+    },
+    {
+      "id": "52y0v",
+      "name": "Lily Ward",
+      "email": "lily.ward@example.com"
+    },
+    {
+      "id": "53z1w",
+      "name": "Samuel Torres",
+      "email": "samuel.torres@example.com"
+    },
+    {
+      "id": "54a2x",
+      "name": "Nora Peterson",
+      "email": "nora.peterson@example.com"
+    },
+    {
+      "id": "55b3y",
+      "name": "Gabriel Gray",
+      "email": "gabriel.gray@example.com"
+    },
+    {
+      "id": "56c4z",
+      "name": "Lillian Ramirez",
+      "email": "lillian.ramirez@example.com"
+    },
+    {
+      "id": "57d5a",
+      "name": "Wyatt James",
+      "email": "wyatt.james@example.com"
+    },
+    {
+      "id": "58e6b",
+      "name": "Addison Watson",
+      "email": "addison.watson@example.com"
+    },
+    {
+      "id": "59f7c",
+      "name": "Leo Brooks",
+      "email": "leo.brooks@example.com"
+    },
+    {
+      "id": "60g8d",
+      "name": "Victoria Kelly",
+      "email": "victoria.kelly@example.com"
+    },
+    {
+      "id": "61h9e",
+      "name": "Jackie Sanders",
+      "email": "jackie.sanders@example.com"
+    },
+    {
+      "id": "62i0f",
+      "name": "Elias Price",
+      "email": "elias.price@example.com"
+    },
+    {
+      "id": "63j1g",
+      "name": "Savannah Bennett",
+      "email": "savannah.bennett@example.com"
+    },
+    {
+      "id": "64k2h",
+      "name": "Aiden Wood",
+      "email": "aiden.wood@example.com"
+    },
+    {
+      "id": "65l3i",
+      "name": "Chloe Barnes",
+      "email": "chloe.barnes@example.com"
+    },
+    {
+      "id": "66m4j",
+      "name": "Benjamin Ross",
+      "email": "benjamin.ross@example.com"
+    },
+    {
+      "id": "67n5k",
+      "name": "Madelyn Henderson",
+      "email": "madelyn.henderson@example.com"
+    },
+    {
+      "id": "68o6l",
+      "name": "David Coleman",
+      "email": "david.coleman@example.com"
+    },
+    {
+      "id": "69p7m",
+      "name": "Paisley Perry",
+      "email": "paisley.perry@example.com"
+    },
+    {
+      "id": "70q8n",
+      "name": "Connor Jenkins",
+      "email": "connor.jenkins@example.com"
+    },
+    {
+      "id": "71r9o",
+      "name": "Ruby Powell",
+      "email": "ruby.powell@example.com"
+    },
+    {
+      "id": "72s0p",
+      "name": "Maverick Long",
+      "email": "maverick.long@example.com"
+    },
+    {
+      "id": "73t1q",
+      "name": "Aurora Patterson",
+      "email": "aurora.patterson@example.com"
+    },
+    {
+      "id": "74u2r",
+      "name": "Ethan Hughes",
+      "email": "ethan.hughes@example.com"
+    },
+    {
+      "id": "75v3s",
+      "name": "Leah Flores",
+      "email": "leah.flores@example.com"
+    },
+    {
+      "id": "76w4t",
+      "name": "Miles Washington",
+      "email": "miles.washington@example.com"
+    },
+    {
+      "id": "77x5u",
+      "name": "Hazel Butler",
+      "email": "hazel.butler@example.com"
+    },
+    {
+      "id": "78y6v",
+      "name": "Hudson Simmons",
+      "email": "hudson.simmons@example.com"
+    },
+    {
+      "id": "79z7w",
+      "name": "Layla Foster",
+      "email": "layla.foster@example.com"
+    },
+    {
+      "id": "80a8x",
+      "name": "Henry Gonzales",
+      "email": "henry.gonzales@example.com"
+    },
+    {
+      "id": "81b9y",
+      "name": "Stella Bryant",
+      "email": "stella.bryant@example.com"
+    },
+    {
+      "id": "82c0z",
+      "name": "Oliver Alexander",
+      "email": "oliver.alexander@example.com"
+    },
+    {
+      "id": "83d1a",
+      "name": "Ellie Russell",
+      "email": "ellie.russell@example.com"
+    },
+    {
+      "id": "84e2b",
+      "name": "James Griffin",
+      "email": "james.griffin@example.com"
+    },
+    {
+      "id": "85f3c",
+      "name": "Emily Diaz",
+      "email": "emily.diaz@example.com"
+    },
+    {
+      "id": "86g4d",
+      "name": "Daniel Hayes",
+      "email": "daniel.hayes@example.com"
+    },
+    {
+      "id": "87h5e",
+      "name": "Avery Myers",
+      "email": "avery.myers@example.com"
+    },
+    {
+      "id": "88i6f",
+      "name": "Caleb Ford",
+      "email": "caleb.ford@example.com"
+    },
+    {
+      "id": "89j7g",
+      "name": "Scarlett Hamilton",
+      "email": "scarlett.hamilton@example.com"
+    },
+    {
+      "id": "90k8h",
+      "name": "Christopher Graham",
+      "email": "christopher.graham@example.com"
+    },
+    {
+      "id": "91l9i",
+      "name": "Riley Sullivan",
+      "email": "riley.sullivan@example.com"
+    },
+    {
+      "id": "92m0j",
+      "name": "Victoria Wallace",
+      "email": "victoria.wallace@example.com"
+    },
+    {
+      "id": "93n1k",
+      "name": "Jaxon West",
+      "email": "jaxon.west@example.com"
+    },
+    {
+      "id": "94o2l",
+      "name": "Samantha Stone",
+      "email": "samantha.stone@example.com"
+    },
+    {
+      "id": "95p3m",
+      "name": "Jonathan Green",
+      "email": "jonathan.green@example.com"
+    },
+    {
+      "id": "96q4n",
+      "name": "Elena Baker",
+      "email": "elena.baker@example.com"
+    },
+    {
+      "id": "97r5o",
+      "name": "Evan Carter",
+      "email": "evan.carter@example.com"
+    },
+    {
+      "id": "98s6p",
+      "name": "Alyssa Phillips",
+      "email": "alyssa.phillips@example.com"
+    },
+    {
+      "id": "99t7q",
+      "name": "Thomas Evans",
+      "email": "thomas.evans@example.com"
+    },
+    {
+      "id": "100u8r",
+      "name": "Isabella Turner",
+      "email": "isabella.turner@example.com"
+    }
+  ]
+}

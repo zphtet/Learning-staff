@@ -21,26 +21,26 @@ const Users = users;
 const TransitionPage = ()=>{
 
      const [keyword , setKeyword] = useState('')
-     const [filter , setFilter] = useState(Users)
+     const [filter , _] = useState(Users)
        
      const [isPending , startTransition] = useTransition()
       
      const onChangeHandler = (e:React.ChangeEvent<HTMLInputElement>)=>{
-         console.log(e.target.value.trim())
-           setKeyword(e.target.value.trim())
-            startTransition(()=>{
+         const value = e.target.value.trim();
+         startTransition(()=>{
+             setKeyword(value)
                
-                const filtered = Users.filter(user=> user.name.toLocaleLowerCase().includes(e.target.value.trim()))
-                setFilter((_)=>{
-                    for(let i=0 ; i < 300000000;i++){
-                     
-                    }
-                    return filtered
-                })
+                // const filtered = Users.filter(user=> user.name.toLocaleLowerCase().includes(value))
+                // setFilter((_)=>{
+              
+                //     return filtered
+                // })
             })
           
      }
     
+
+        
 
      return <div>
         <input type="text"  key={1}/>

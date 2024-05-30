@@ -1,0 +1,7 @@
+
+when i click the button ,
+invoke callback function . I think this callback function register to task queue . 
+when the main thread is free . Event loop let this callback function run on the main thread.
+
+
+we usually see  immediate inovke . It is because of the main thread is already free .

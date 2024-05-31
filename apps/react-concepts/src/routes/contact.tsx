@@ -1,4 +1,5 @@
-import { Form, useFetcher, useLoaderData } from "react-router-dom";
+import { Suspense } from "react";
+import { Await, Form, useFetcher, useLoaderData } from "react-router-dom";
 
 // const contact = {
 //   id: '1',
@@ -11,66 +12,75 @@ import { Form, useFetcher, useLoaderData } from "react-router-dom";
 
 export default function Contact() {
 
- const contact = useLoaderData() as User;
+ const {contact} = useLoaderData() as { contact : User};
   return (
-    <div id="contact" className="flex gap-5">
-      <div>
-        <img
-          key={'https://flagcdn.com/w20/ua.png'}
-          src={'https://flagcdn.com/w20/ua.png'}
-          className="w-[100px] h-[100px] object-cover"
-        />
-      </div>
+    <Suspense fallback={<div>Loading ... signle contact </div>}>
+      <Await resolve={contact}>
+    {
+      (contact)=>{
 
-      <div className="space-y-4">
-        <h1 className="flex gap-4 text-3xl text-blue-400">
-          {contact.name ? (
-            <>
-              {contact.name}
-            </>
-          ) : (
-            <i>No Name</i>
-          )}{" "}
-          <Favorite contact={contact} />
-        </h1>
-
-        {/* {contact.twitter && (
-          <p>
-            <a
-              target="_blank"
-              href={`https://twitter.com/${contact.twitter}`}
-              className="text-blue-300 font-2xl underline"
+        return   <div id="contact" className="flex gap-5">
+        <div>
+          <img
+            key={'https://flagcdn.com/w20/ua.png'}
+            src={'https://flagcdn.com/w20/ua.png'}
+            className="w-[100px] h-[100px] object-cover"
+          />
+        </div>
+  
+        <div className="space-y-4">
+          <h1 className="flex gap-4 text-3xl text-blue-400">
+            {contact.name ? (
+              <>
+                {contact.name}
+              </>
+            ) : (
+              <i>No Name</i>
+            )}{" "}
+            <Favorite contact={contact} />
+          </h1>
+  
+          {/* {contact.twitter && (
+            <p>
+              <a
+                target="_blank"
+                href={`https://twitter.com/${contact.twitter}`}
+                className="text-blue-300 font-2xl underline"
+              >
+                {contact.twitter}
+              </a>
+            </p>
+          )}
+  
+          {contact.notes && <p>{contact.notes}</p>} */}
+  
+          <div className="flex gap-5">
+            <Form action="edit">
+              <button type="submit" className="border border-blue-400 py-1 px-4 rounded-md">Edit</button>
+            </Form>
+            <Form
+              method="post"
+              action="destroy"
+              className="border border-red-400 py-1 px-4 rounded-md"
+              onSubmit={(event) => {
+                if (
+                  !confirm(
+                    "Please confirm you want to delete this record."
+                  )
+                ) {
+                  event.preventDefault();
+                }
+              }}
             >
-              {contact.twitter}
-            </a>
-          </p>
-        )}
-
-        {contact.notes && <p>{contact.notes}</p>} */}
-
-        <div className="flex gap-5">
-          <Form action="edit">
-            <button type="submit" className="border border-blue-400 py-1 px-4 rounded-md">Edit</button>
-          </Form>
-          <Form
-            method="post"
-            action="destroy"
-            className="border border-red-400 py-1 px-4 rounded-md"
-            onSubmit={(event) => {
-              if (
-                !confirm(
-                  "Please confirm you want to delete this record."
-                )
-              ) {
-                event.preventDefault();
-              }
-            }}
-          >
-            <button type="submit">Delete</button>
-          </Form>
+              <button type="submit">Delete</button>
+            </Form>
+          </div>
         </div>
       </div>
-    </div>
+      }
+    }
+    </Await>
+    </Suspense>
   );
 }
 

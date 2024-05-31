@@ -1,8 +1,8 @@
-// import { wait } from "./wait";
+import { wait } from "./wait";
 
 const getContacts =async (q : string)=>{
     try {
-        // await wait(2)
+        await wait(2)
         const  res = await fetch('http://localhost:5000/contacts')
         const data = await res.json() as User[]
 

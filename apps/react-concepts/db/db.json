@@ -8,7 +8,7 @@
     },
     {
       "id": "a4f6",
-      "name": "mgmg",
+      "name": "mgmgvd",
       "email": "mgmg@gmai.com",
       "favourite": false
     },
@@ -44,7 +44,8 @@
     {
       "id": "5d3a",
       "name": "Albert Johnson",
-      "email": "albert.johnson@example.com"
+      "email": "albert.johnson@example.com",
+      "favourite": true
     },
     {
       "id": "7f5c",

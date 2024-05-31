@@ -1,5 +1,5 @@
 import { Suspense, useEffect, useRef, useState } from "react";
-import { NavLink, useNavigation, useSubmit } from "react-router-dom";
+import { Await, NavLink, useNavigation, useSubmit } from "react-router-dom";
 import {  useLoaderData } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import { Form } from "react-router-dom";
@@ -97,15 +97,16 @@ export default function Root() {
           </nav>
         </div>
         <div id="detail"  className="relative flex-1">
-          {
+          {/* {
             loading && 
              <div className="absolute inset-0 top-0 right-0 bg-teal-200 opacity-55">
                     
              </div>
-          }
-          <Suspense fallback={<div>Loading contacts ....</div>}>
+          } */}
+        
+
              <Outlet/>
-          </Suspense>
+         
         </div>
       </div>
     );

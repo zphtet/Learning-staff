@@ -2,7 +2,7 @@ import { wait } from "./wait";
 
 const getSingleContact =async (id : string)=>{
     try {
-        await wait(1)
+        // await wait(1)
         const  res = await fetch(`http://localhost:5000/contacts/${id}`)
         const data = await res.json()
         console.log("single data", data)

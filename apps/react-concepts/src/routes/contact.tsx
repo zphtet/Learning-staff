@@ -92,6 +92,8 @@ function Favorite({ contact }: { contact: User }) {
   
    console.log('fetch', fetcher)
 
+   const submitting = fetcher.state ==='submitting'
+
   return (
     <fetcher.Form method="PATCH">
       <button
@@ -105,6 +107,11 @@ function Favorite({ contact }: { contact: User }) {
         }
       >
         {favorite ? "★" : "☆"}
+        {
+          submitting && (
+          <p>updating fav ....</p>
+          )
+        }
       </button>
     </fetcher.Form>
   );

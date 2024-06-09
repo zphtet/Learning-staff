@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 
-import { createBrowserRouter , RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Root from './routes/root.tsx'
 import ErrorPage from './error-page.tsx'
 import Contact from './routes/contact.tsx'
@@ -15,47 +15,60 @@ import Index from './routes/index.tsx'
 import { addFavouriteAction } from './action/add-fav-action.ts'
 
 
-const router =  createBrowserRouter([
+import { ApolloClient, InMemoryCache, ApolloProvider, gql } from '@apollo/client';
+
+// import usePrevious from "../lib/usePrevious";
+
+
+const client = new ApolloClient({
+  uri: 'http://localhost:4000',
+  cache: new InMemoryCache(),
+});
+
+const router = createBrowserRouter([
   {
-    path : '/',
-    element  : <Root/>,
-    errorElement :<ErrorPage/>,
-    loader : contactLoader,
-    action : createContactAction,
-    children : [
+    path: '/',
+    element: <Root />,
+    errorElement: <ErrorPage />,
+    loader: contactLoader,
+    action: createContactAction,
+    children: [
       {
-        path : 'contacts/:contactId',
-        element : <Contact/>,
-        loader : singleContactLoader,
-        action : addFavouriteAction,
-        errorElement : <div>Oops : This docs might not be there</div>
+        path: 'contacts/:contactId',
+        element: <Contact />,
+        loader: singleContactLoader,
+        action: addFavouriteAction,
+        errorElement: <div>Oops : This docs might not be there</div>
       },
       {
-         path : 'contacts/:contactId/edit',
-         element  : <EditForm/>,
-         loader : singleContactLoader,
-         action  : updateContactAction
+        path: 'contacts/:contactId/edit',
+        element: <EditForm />,
+        loader: singleContactLoader,
+        action: updateContactAction
       }
-    ,
+      ,
       {
-        path : 'contacts/:contactId/destroy',
-        action : deleteContactAction,
-        errorElement  : <p>Oops : Error while deleting this row</p>
+        path: 'contacts/:contactId/destroy',
+        action: deleteContactAction,
+        errorElement: <p>Oops : Error while deleting this row</p>
 
       },
       {
-         index : true,
-         element : <Index/>
+        index: true,
+        element: <Index />
       }
     ]
   },
-  
+
 ])
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
+  <ApolloProvider client={client}>
 
-    {/* <App /> */}
+    <React.StrictMode>
 
-    <RouterProvider router={router}/>
-  </React.StrictMode>,
+      {/* <App /> */}
+
+      <RouterProvider router={router} />
+    </React.StrictMode>
+  </ApolloProvider>,
 )

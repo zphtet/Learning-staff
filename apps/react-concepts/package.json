@@ -11,8 +11,10 @@
     "server": "npx json-server db/db.json --port=5000"
   },
   "dependencies": {
+    "@apollo/client": "^3.10.4",
     "@types/react-router-dom": "^5.3.3",
     "axios": "^1.7.2",
+    "graphql": "^16.8.1",
     "json-server": "^1.0.0-beta.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

@@ -14,16 +14,12 @@ import deleteContactAction from './action/delete-contact-action.ts'
 import Index from './routes/index.tsx'
 import { addFavouriteAction } from './action/add-fav-action.ts'
 
-
-import { ApolloClient, InMemoryCache, ApolloProvider, gql } from '@apollo/client';
-
+import { ApolloProvider } from '@apollo/client';
+import client from './apollo/index.ts'
 // import usePrevious from "../lib/usePrevious";
 
 
-const client = new ApolloClient({
-  uri: 'http://localhost:4000',
-  cache: new InMemoryCache(),
-});
+
 
 const router = createBrowserRouter([
   {

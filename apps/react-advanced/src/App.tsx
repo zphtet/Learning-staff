@@ -5,6 +5,7 @@ import Memo2 from "./components/memoization/Memo2";
 import Memoization from "./components/memoization/Memoization";
 import FormRef from "./components/ref/ref";
 import RenderProps from "./components/renderprops/renderporps";
+import MainPage from "./components/state-management/page";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <FormRef />
       <ImperativeHandleForm />
       <ClosureReact />
+      <MainPage />
     </div>
   );
 }

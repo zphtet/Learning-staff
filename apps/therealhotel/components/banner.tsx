@@ -11,12 +11,10 @@ import imgfive from "@/images/img-5.jpg";
 import ScaleX from "./animate/scale-x";
 import { useScroll, useTransform, motion, useMotionValue } from "motion/react";
 import { useEffect, useRef, useState } from "react";
+import ImageComponent from "./img-component";
 
 const Banner = () => {
   const targetRef = useRef(null);
-
-  // const windowWidth = window.innerWidth;
-  // const windowHeight = window.innerHeight;
 
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -33,35 +31,8 @@ const Banner = () => {
 
   const opacity = useTransform(scrollYProgress, [0, 0.6, 1], [1, 1, 0.4]);
 
-  // const mX = useMotionValue(windowWidth / 2);
-  // const mY = useMotionValue(windowHeight / 2);
-
-  // const xPos = useTransform(
-  //   mX,
-  //   [0, windowWidth / 2, windowWidth],
-  //   [-20, 0, 20],
-  // );
-  // const yPos = useTransform(
-  //   mY,
-  //   [0, windowHeight / 2, windowHeight],
-  //   [-20, 0, 20],
-  // );
-
   // console.log(mouseX, mouseY);
 
-  // useEffect(() => {
-  //   document.addEventListener("mousemove", (e) => {
-  //     mX.set(e.clientX);
-  //     mY.set(e.clientY);
-  //   });
-
-  //   return () => {
-  //     document.removeEventListener("mousemove", (e) => {
-  //       mX.set(e.clientX);
-  //       mY.set(e.clientY);
-  //     });
-  //   };
-  // }, []);
   return (
     <div className=" container relative   " ref={targetRef}>
       <Header />
@@ -74,8 +45,6 @@ const Banner = () => {
           width: width,
           aspectRatio: "16/9",
           // background: "red",
-          // x: xPos,
-          // y: yPos,
         }}
         className="sticky left-3/4  top-32  mx-auto aspect-video  "
       >
@@ -105,51 +74,19 @@ const Banner = () => {
       </motion.div>
 
       <ScaleX className="absolute top-28 aspect-video w-32 [left:30%]">
-        <motion.img
-          // style={{
-          //   x: xPos,
-          //   y: yPos,
-          // }}
-          src={imgone.src}
-          alt="image one"
-          className="aspect-video w-32"
-        />
+        <ImageComponent src={imgone.src} />
       </ScaleX>
 
       <ScaleX className="absolute top-96 aspect-video w-20  [right:1%]">
-        <motion.img
-          src={imgthree.src}
-          // style={{
-          //   x: xPos,
-          //   y: yPos,
-          // }}
-          alt="image three"
-          className="aspect-video w-20"
-        />
+        <ImageComponent src={imgthree.src} />
       </ScaleX>
 
       <ScaleX className="absolute top-44 z-10 w-28 [aspect-ratio:5/7] [left:5%]">
-        <motion.img
-          // style={{
-          //   x: xPos,
-          //   y: yPos,
-          // }}
-          src={imgfour.src}
-          alt="image four"
-          className="w-28 [aspect-ratio:5/7]"
-        />
+        <ImageComponent src={imgfour.src} />
       </ScaleX>
 
       <ScaleX className="absolute top-72 aspect-video w-36 [left:10%]">
-        <Image
-          // style={{
-          //   x: xPos,
-          //   y: yPos,
-          // }}
-          src={imgfive}
-          alt="image five"
-          className="aspect-video w-36"
-        />
+        <ImageComponent src={imgfive.src} />
       </ScaleX>
 
       <div className="z-100 relative py-16 pb-[80vh]">

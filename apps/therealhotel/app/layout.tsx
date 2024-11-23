@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import LenisScrollProvider from "./provider/lenis-provider";
+import LoadProvider from "./provider/load-provider";
 // import ReactLenis from "@studio-freight/react-lenis";
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,7 +31,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} bg-black text-white antialiased`}
       >
         {/* <ReactLenis root>{children}</ReactLenis> */}
-        <LenisScrollProvider>{children}</LenisScrollProvider>
+
+        <LoadProvider>
+          <LenisScrollProvider>{children}</LenisScrollProvider>
+        </LoadProvider>
       </body>
     </html>
   );

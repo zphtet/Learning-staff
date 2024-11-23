@@ -25,3 +25,19 @@ body {
     @apply mx-auto max-w-6xl px-5 py-5;
   }
 }
+
+.mask-container {
+  /* mask-image: url("../images/star.svg");*/
+  mask-image: url("../images/foot.svg");
+  mask-position: center center;
+  /* border: 2px solid red; */
+  z-index: 4;
+  /* mask-position: outline; */
+  /* mask-size: 50px; */
+  mask-size: contain;
+  position: relative;
+  mask-repeat: no-repeat;
+  /* background-image: url("../images/img-2.jpg"); */
+  /* background-position: center;
+  background-size: cover; */
+}

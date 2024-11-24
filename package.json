@@ -25,6 +25,7 @@
   ],
   "dependencies": {
     "@studio-freight/react-lenis": "^0.0.47",
+    "@uidotdev/usehooks": "^2.4.1",
     "body-parser": "^1.20.2",
     "dotenv": "^16.4.5",
     "get-stdin": "^8.0.0",
@@ -33,6 +34,7 @@
     "motion": "^11.11.17",
     "nodemon": "^3.1.2",
     "tailwind-merge": "^2.3.0",
+    "tailwindcss-motion": "^0.4.3-beta",
     "ts-node": "^10.9.2"
   }
 }

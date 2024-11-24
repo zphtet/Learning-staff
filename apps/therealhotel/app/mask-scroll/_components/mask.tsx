@@ -10,7 +10,7 @@ const Mask = () => {
 
   const widthSpring = useTransform(width, [0, 1], ["10%", "100%"]);
   return (
-    <div className="flex h-screen items-center justify-center">
+    <div  className="flex h-screen items-center justify-center">
       <motion.div
         className="mask-container aspect-square "
         style={{

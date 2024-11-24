@@ -41,3 +41,7 @@ body {
   /* background-position: center;
   background-size: cover; */
 }
+
+#text {
+  cursor: context-menu;
+}

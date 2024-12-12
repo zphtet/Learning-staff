@@ -32,9 +32,9 @@ export default function RootLayout({
       >
         {/* <ReactLenis root>{children}</ReactLenis> */}
 
-        <LoadProvider>
-          <LenisScrollProvider>{children}</LenisScrollProvider>
-        </LoadProvider>
+        {/* <LoadProvider> */}
+        <LenisScrollProvider>{children}</LenisScrollProvider>
+        {/* </LoadProvider> */}
       </body>
     </html>
   );

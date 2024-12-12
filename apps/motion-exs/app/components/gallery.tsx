@@ -29,7 +29,7 @@ const Gallery = () => {
     y.set(position.elementY - 120);
   };
 
-  console.count("Gallery Render");
+  // console.count("Gallery Render");
 
   const setIndexHandler = useCallback((idx: number) => {
     return setIdx(idx);

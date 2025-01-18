@@ -4,6 +4,7 @@ import Gallery from "./components/gallery";
 import { useInView } from "motion/react";
 import { useEffect, useRef, useState, useTransition } from "react";
 import React from "react";
+import { Button } from "@repo/ui/button";
 // for (let i = 0; i < 10000000000; i++) {}
 
 const Heavy = React.memo(() => {
@@ -30,6 +31,13 @@ export default function Home() {
       <div className="min-h-screen">
         <Gallery />
       </div>
+
+      <Button
+        appName={"Motion"}
+        className="rounded-full border bg-red-500 px-5 py-2 text-white"
+      >
+        {"Hello Btn"}
+      </Button>
 
       <div className="h-[200vh] px-10 py-10">
         {/* <p className="motion-preset-typewriter-[5] motion-preset-blur-down-sm text-3xl">

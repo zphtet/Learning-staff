@@ -13,6 +13,8 @@ const rl = readline.createInterface({
   prompt: "> ",
 });
 
+let userId;
+
 const clearLine = (dir) => {
   return new Promise((resolve, reject) => {
     process.stdout.clearLine(dir, () => {
@@ -37,7 +39,7 @@ const askQuestion = async () => {
   // Clear the current line to remove previous prompt
   await clearLine(0);
   // console.log();
-  client.write(message);
+  client.write(`${userId}-${message}`);
 };
 
 client.on("connect", async () => {
@@ -52,7 +54,14 @@ client.on("data", async (data) => {
   await moveCursor(0, -1);
   // Clear the current line to remove previous prompt
   await clearLine(0);
-  console.log(data.toString("utf-8"));
+
+  if (data.toString().startsWith("ID-")) {
+    const id = data.toString().substring(3);
+    userId = id;
+    console.log(`Your ID is ${id}`);
+  } else {
+    console.log(data.toString("utf-8"));
+  }
   askQuestion();
 });
 

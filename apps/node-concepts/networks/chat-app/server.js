@@ -12,15 +12,24 @@ server.on("connection", (socket) => {
     socket.address(),
   );
 
-  clients.push(socket);
+  clients.push({
+    socket,
+    id: socket.remotePort.toString(),
+  });
+
+  socket.write(`ID-${socket.remotePort}`);
 
   socket.on("data", (data) => {
     // console.log(data.toString("utf-8"));
     // socket.write(`Hello ${data.toString("utf-8")}`);
 
+    const dataStringArr = data.toString("utf-8").split("-");
+    const userId = dataStringArr[0];
+    const mesage = dataStringArr[1];
+
     clients.forEach((client) => {
       // if (client !== socket) {
-      client.write(`${data.toString("utf-8")}`);
+      client.socket.write(`> User : ${userId}   ${mesage}`);
       // }
     });
   });

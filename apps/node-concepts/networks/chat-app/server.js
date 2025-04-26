@@ -12,12 +12,18 @@ server.on("connection", (socket) => {
     socket.address(),
   );
 
-  clients.push({
-    socket,
-    id: socket.remotePort.toString(),
+  const socketId = socket.remotePort.toString();
+
+  clients.map((client) => {
+    client.socket.write(`User ${socketId} Joined`);
   });
 
-  socket.write(`ID-${socket.remotePort}`);
+  clients.push({
+    socket,
+    id: socketId,
+  });
+
+  socket.write(`ID-${socketId}`);
 
   socket.on("data", (data) => {
     // console.log(data.toString("utf-8"));
@@ -31,6 +37,12 @@ server.on("connection", (socket) => {
       // if (client !== socket) {
       client.socket.write(`> User : ${userId}   ${mesage}`);
       // }
+    });
+  });
+
+  socket.on("end", () => {
+    clients.map((client) => {
+      client.socket.write(`User ${socketId} left `);
     });
   });
 });

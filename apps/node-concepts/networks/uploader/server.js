@@ -17,11 +17,30 @@ server.on("connection", async (socket) => {
   fileHandle = await fs.open("./storage/text.txt", "w");
   fileStream = fileHandle.createWriteStream();
 
+  console.log("Server writableHighWaterMark", fileStream.writableHighWaterMark);
+
+  let canWrite = true;
   socket.on("data", (data) => {
-    fileStream.write(data.toString("utf-8"));
+    canWrite = fileStream.write(data.toString("utf-8"));
+    if (!canWrite) {
+      socket.pause();
+    }
+  });
+
+  fileStream.on("drain", () => {
+    // console.log("Drained");
+    socket.resume();
+  });
+
+  fileStream.on("finish", () => {
+    console.log("File uploaded successfully");
+    fileHandle.close();
   });
 
   socket.on("end", () => {
     console.log("Client disconnected");
+    fileHandle = undefined;
+    fileStream = undefined;
+    // fileStream.end();
   });
 });

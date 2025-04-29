@@ -1,5 +1,6 @@
 import net from "net";
 import fs from "fs/promises";
+import path from "path";
 const client = net.createConnection({
   host: "127.0.0.1",
   port: 3001,
@@ -7,11 +8,22 @@ const client = net.createConnection({
 
 console.log("Client writableHighWaterMark", client.writableHighWaterMark);
 
+const filePath = process.argv[2];
+const fileName = path.basename(filePath);
+
+console.log("fileName", fileName);
+
+// return;
+
 client.on("connect", async () => {
   console.log("Connected to server");
 
-  const fileHandle = await fs.open("./storage/numbers.txt", "r");
+  const fileHandle = await fs.open(filePath, "r");
   const fileStream = fileHandle.createReadStream();
+
+  // fileStream.pause();
+  client.write(`${fileName}##########`);
+  // fileStream.resume();
 
   fileStream.on("data", (chunk) => {
     const canWrite = client.write(chunk);

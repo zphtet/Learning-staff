@@ -1,8 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const NUMBERS_TO_GENERATE = 500000000;
-const BATCH_SIZE = 1000000; // Process in batches of 1 million numbers
+const NUMBERS_TO_GENERATE = 1000000; // Reduced to 1 million numbers
+const BATCH_SIZE = 100000; // Process in batches of 100 thousand numbers
 const OUTPUT_FILE = path.join(__dirname, 'numbers.txt');
 
 const writeStream = fs.createWriteStream(OUTPUT_FILE);
@@ -30,7 +30,7 @@ function generateNumbers() {
         batch.push(numbersGenerated);
         numbersGenerated++;
         
-        if (numbersGenerated % 10000000 === 0) {
+        if (numbersGenerated % 100000 === 0) {
             console.log(`Generated ${numbersGenerated} numbers...`);
         }
         

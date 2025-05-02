@@ -21,8 +21,10 @@ client.on("connect", async () => {
   const fileHandle = await fs.open(filePath, "r");
   const fileStream = fileHandle.createReadStream();
 
+  const fileSize = (await fileHandle.stat()).size;
+  let bytesWritten = 0;
   // fileStream.pause();
-  client.write(`${fileName}##########`);
+  client.write(`${fileName}`);
   // fileStream.resume();
 
   fileStream.on("data", (chunk) => {
@@ -30,10 +32,14 @@ client.on("connect", async () => {
     if (!canWrite) {
       fileStream.pause();
     }
+    bytesWritten += chunk.length;
+    const percentage = Math.round((bytesWritten / fileSize) * 100);
+    // console.log(`Uploading... ${percentage}% done`);
+    process.stdout.write(`\r${percentage}% done`);
   });
 
   client.on("drain", () => {
-    console.log("Drained");
+    // console.log("Drained");
     fileStream.resume();
   });
 

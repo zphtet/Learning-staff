@@ -10,66 +10,53 @@ server.listen(3001, "127.0.0.1", () => {
 server.on("connection", async (socket) => {
   console.log("Client connected");
 
-  // fileHandle = await fs.open("./storage/write.txt", "w");
-  // fileStream = fileHandle.createWriteStream();
+  let fileHandle = null;
+  let fileStream = null;
+  let isFirstChunk = true;
+  let fileName = "";
 
-  let fileHandle;
-  let fileStream;
-
-  // console.log("Server writableHighWaterMark", fileStream.writableHighWaterMark);
-
-  let canWrite = true;
-
-  // let isFirst = false;
-  let i = 0;
   socket.on("data", async (data) => {
-    let string = data.toString("utf-8");
-    let fileName = "";
+    const string = data.toString("utf-8");
 
-    if (!fileHandle && i === 0) {
-      const parts = string.split("##########");
-      console.log("parts", parts);
-      i++;
-      if (parts.length >= 2) {
-        fileName = parts[0];
-        string = parts[1];
-        try {
-          fileHandle = await fs.open("./storage/" + fileName, "w");
-          fileStream = fileHandle.createWriteStream();
-          console.log("Created Write Stream");
-        } catch (error) {
-          console.error("Error creating file stream:", error);
-          return;
-        }
-      } else {
-        console.error("Invalid data format: missing file name separator");
+    if (isFirstChunk) {
+      fileName = string.trim();
+      try {
+        fileHandle = await fs.open("./storage/" + fileName, "w");
+        fileStream = fileHandle.createWriteStream();
+
+        // Set up drain event handler
+        // The drain event is needed because when writing the first chunk of data,
+        // if the internal buffer of the write stream becomes full (backpressure),
+        // we need to pause receiving more data from the socket until the buffer
+        // has been emptied. The drain event tells us when it's safe to resume.
+        fileStream.on("drain", () => {
+          // drain event occurs when internal buffer (16KB) is emptied after being full
+          console.log("Stream drained (16KB buffer emptied), resuming socket");
+          socket.resume();
+        });
+
+        console.log("Created Write Stream for file:", fileName);
+      } catch (error) {
+        console.error("Error creating file stream:", error);
+        socket.end();
         return;
       }
-    }
-
-    if (fileStream && string) {
+      isFirstChunk = false;
+    } else if (fileStream) {
       try {
-        canWrite = fileStream.write(string);
+        const canWrite = fileStream.write(data);
         if (!canWrite) {
+          console.log("Backpressure detected, pausing socket");
           socket.pause();
         }
       } catch (error) {
         console.error("Error writing to file stream:", error);
+        socket.end();
       }
+    } else {
+      console.log("File stream is not created yet");
     }
   });
-
-  if (fileStream) {
-    fileStream.on("drain", () => {
-      // console.log("Drained");
-      socket.resume();
-    });
-
-    fileStream.on("finish", () => {
-      console.log("File uploaded successfully");
-      fileHandle.close();
-    });
-  }
 
   socket.on("end", async () => {
     console.log("Client disconnected");
@@ -84,9 +71,6 @@ server.on("connection", async (socket) => {
         console.error("Error closing file handle:", error);
       }
     }
-    fileHandle = undefined;
-    fileStream = undefined;
-    i = 0;
   });
 
   socket.on("error", async (error) => {
@@ -102,8 +86,5 @@ server.on("connection", async (socket) => {
         console.error("Error closing file handle:", err);
       }
     }
-    fileHandle = undefined;
-    fileStream = undefined;
-    i = 0;
   });
 });

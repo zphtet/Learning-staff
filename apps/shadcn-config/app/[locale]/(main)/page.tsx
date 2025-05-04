@@ -1,14 +1,19 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 import { ContentLayout } from "@/components/admin-panel/content-layout";
+import { ClientCom } from "@/components/client-com";
+import ServerCom from "@/components/server-com";
+import Toggle from "@/components/toggle";
 
 export default function HomePage() {
   const t = useTranslations("IndexPage");
+
   return (
     <ContentLayout title="Dashboard">
       <div>
         <h1>{t("title")}</h1>
         <Link href={"/dashboard"}> Dashboard</Link>
+        <ClientCom />
         {/* <p>{t("description")}</p> */}
         <p className="max-w-[590px]">
           {t.rich("description", {
@@ -19,6 +24,8 @@ export default function HomePage() {
         </p>
         {/* <Link href={"/pathnames"}>{t("about")}</Link> */}
       </div>
+      <ServerCom />
+      <Toggle />
     </ContentLayout>
   );
 }

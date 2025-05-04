@@ -16,6 +16,8 @@ import {
   TooltipProvider,
 } from "@/components/ui/tooltip";
 
+import { signOut } from "next-auth/react";
+
 interface MenuProps {
   isOpen: boolean | undefined;
 }
@@ -118,7 +120,13 @@ export function Menu({ isOpen }: MenuProps) {
               <Tooltip delayDuration={100}>
                 <TooltipTrigger asChild>
                   <Button
-                    onClick={() => {}}
+                    onClick={async () => {
+                      // "use server";
+                      await signOut({
+                        redirect: true,
+                        callbackUrl: "/en/signin",
+                      });
+                    }}
                     variant="outline"
                     className="mt-5 h-10 w-full justify-center"
                   >

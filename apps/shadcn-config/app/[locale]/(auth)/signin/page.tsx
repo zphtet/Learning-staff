@@ -21,7 +21,7 @@ const SignIn = () => {
       const result = await signIn("credentials", {
         // credentials: btoa(`zinpainghtet.215108@gmail.com:12345678`),
         redirect: false,
-        credentials: btoa(`zinpainghtet.215108@gmail.com:12345678`),
+        credentials: btoa(`piti@gmail.com:chan123456`),
         scope: "BACKOFFICE.all",
         type: "jwt",
       });

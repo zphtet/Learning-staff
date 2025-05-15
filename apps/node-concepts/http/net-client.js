@@ -1,0 +1,43 @@
+import net from "node:net";
+
+const headerBytes =
+  "504f5354202f6372656174652d7573657220485454502f312e310d0a436f6e74656e742d547970653a206170706c69636174696f6e2f6a736f6e0d0a486f73743a206c6f63616c686f73743a383035300d0a436f6e6e656374696f6e3a206b6565702d616c6976650d0a5472616e736665722d456e636f64696e673a206368756e6b65640d0a0d0a31330d0a";
+
+const writeBytesData =
+  "2248454c4c4f2046524f4d20434c49454e54222248454c4c4f2046524f4d20434c49454e542032222248454c4c4f2046524f4d20434c49454e542033222248454c4c4f2046524f4d20434c49454e54203422";
+
+const allData =
+  "1e000000600f0000011706400000000000000000000000000000000100000000000000000000000000000001c0871f7219cde087cdfa5644801818e3011f00000101080a642352cc94f26ed1504f5354202f6372656174652d7573657220485454502f312e310d0a436f6e74656e742d547970653a206170706c69636174696f6e2f6a736f6e0d0a486f73743a206c6f63616c686f73743a383035300d0a436f6e6e656374696f6e3a206b6565702d616c6976650d0a5472616e736665722d456e636f64696e673a206368756e6b65640d0a0d0a31330d0a2248454c4c4f2046524f4d20434c49454e54220d0a31350d0a2248454c4c4f2046524f4d20434c49454e542032220d0a31350d0a2248454c4c4f2046524f4d20434c49454e542033220d0a31350d0a2248454c4c4f2046524f4d20434c49454e542034220d0a300d0a0d0a";
+
+const client = net.createConnection(
+  {
+    host: "localhost",
+    port: 8050,
+  },
+  () => {
+    // const buff = Buffer.alloc(8);
+    // buff[0] = 12;
+    // buff[1] = 34;
+
+    const headerBuffer = Buffer.from(headerBytes, "hex");
+    const writeBytesBuffer = Buffer.from(writeBytesData, "hex");
+
+    const allDataBuffer = Buffer.from(allData, "hex");
+    // client.write(Buffer.concat([headerBuffer, writeBytesBuffer]));
+
+    client.write(Buffer.concat([headerBuffer, writeBytesBuffer]));
+  },
+);
+
+client.on("data", (data) => {
+  console.log("Received:", data.toString("utf-8"));
+});
+
+client.on("end", () => {
+  console.log("Disconnected from server");
+});
+
+// client.on("connect", () => {
+//   console.log("Writing to server");
+//   client.write("Hello from client");
+// });

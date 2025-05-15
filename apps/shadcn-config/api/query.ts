@@ -124,7 +124,9 @@ export interface RefreshTokenVariables {
   refreshToken: string | null;
 }
 
-export const generateRefreshToken = async (variables: RefreshTokenVariables) => {
+export const generateRefreshToken = async (
+  variables: RefreshTokenVariables,
+) => {
   try {
     const response = await fetch(API_ENDPOINT, {
       method: "POST",
@@ -144,3 +146,23 @@ export const generateRefreshToken = async (variables: RefreshTokenVariables) => 
     throw error;
   }
 };
+
+const GET_ALL_USERS_QUERY = `
+  query Users(
+    $where: UserWhereInput
+    $orderBy: [UserOrderByWithRelationInput!]
+    $take: Int
+    $skip: Int
+  ) {
+    users(where: $where, orderBy: $orderBy, take: $take, skip: $skip) {
+      id
+      name
+      photo
+      active
+      role
+      expiry_date
+    }
+  }
+`;
+
+// export const getAllUsers = async ()

@@ -24,6 +24,6 @@ server.on("request", (req, res) => {
   res.write(JSON.stringify({ message: "Hello from server" }));
 });
 
-server.listen(8000, () => {
-  console.log("Http server is running on port 8000");
+server.listen(8050, () => {
+  console.log("Http server is running on port 8050");
 });

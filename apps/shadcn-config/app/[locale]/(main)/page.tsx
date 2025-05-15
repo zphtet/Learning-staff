@@ -4,7 +4,8 @@ import { ContentLayout } from "@/components/admin-panel/content-layout";
 import { ClientCom } from "@/components/client-com";
 import ServerCom from "@/components/server-com";
 import Toggle from "@/components/toggle";
-
+import Locations from "@/components/locatons";
+import { ProductTable } from "@/components/product-table";
 export default function HomePage() {
   const t = useTranslations("IndexPage");
 
@@ -13,7 +14,11 @@ export default function HomePage() {
       <div>
         <h1>{t("title")}</h1>
         <Link href={"/dashboard"}> Dashboard</Link>
-        <ClientCom />
+
+        <ProductTable />
+
+        {/* <ClientCom /> */}
+        <Locations />
         {/* <p>{t("description")}</p> */}
         <p className="max-w-[590px]">
           {t.rich("description", {
@@ -24,7 +29,7 @@ export default function HomePage() {
         </p>
         {/* <Link href={"/pathnames"}>{t("about")}</Link> */}
       </div>
-      <ServerCom />
+      {/* <ServerCom /> */}
       <Toggle />
     </ContentLayout>
   );

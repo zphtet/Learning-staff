@@ -6,7 +6,7 @@ const request = http.request({
   agent: client,
   method: "POST",
   hostname: "localhost",
-  port: 8000,
+  port: 8050,
   path: "/create-user",
   headers: {
     "Content-Type": "application/json",
@@ -23,6 +23,12 @@ request.write(JSON.stringify("HELLO FROM CLIENT 4"));
 request.end();
 
 request.on("response", (res) => {
+  // Status Code
+  console.log("Status Code:", res.statusCode);
+
+  // Headers
+  console.log("Headers:", res.headers);
+
   res.on("data", (chunk) => {
     console.log("Chunk:", chunk.toString("utf-8"));
   });

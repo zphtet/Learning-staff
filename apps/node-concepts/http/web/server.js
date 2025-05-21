@@ -8,13 +8,26 @@ const server = http.createServer(async (req, res) => {
     const fileHandle = await fs.open("./public/index.html", "r");
     // const content = await fileHandle.readFile("utf-8");
     // res.end(content);
+    res.setHeader("Content-Type", "text/html");
     const readStream = fileHandle.createReadStream();
     readStream.pipe(res);
-  } else {
-    res.end("Not found");
+  }
+
+  if (req.url === "/style.css" && req.method === "GET") {
+    const fileHandle = await fs.open("./public/style.css", "r");
+    res.setHeader("Content-Type", "text/css");
+    const readStream = fileHandle.createReadStream();
+    readStream.pipe(res);
+  }
+
+  if (req.url === "/app.js" && req.method === "GET") {
+    const fileHandle = await fs.open("./public/app.js", "r");
+    res.setHeader("Content-Type", "text/javascript");
+    const readStream = fileHandle.createReadStream();
+    readStream.pipe(res);
   }
 });
 
-server.listen(3000, () => {
-  console.log("Server is running on port 3000");
+server.listen(5002, () => {
+  console.log("Server is running on port 5002");
 });

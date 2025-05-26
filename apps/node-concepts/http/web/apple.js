@@ -9,6 +9,12 @@ async function sendFile(filePath, type, res) {
   //   fileHandle.close();
 }
 
+function json(data, res) {
+  res.setHeader("Content-Type", "application/json");
+  res.end(JSON.stringify(data));
+  return res;
+}
+
 class Butter {
   constructor() {
     this.server = http.createServer();
@@ -22,6 +28,8 @@ class Butter {
         res.statusCode = code;
         return this;
       };
+
+      res.json = (data) => json(data, res);
 
       if (this.routes[req.method + req.url]) {
         this.routes[req.method + req.url](req, res);

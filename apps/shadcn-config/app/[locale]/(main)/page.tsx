@@ -6,6 +6,7 @@ import ServerCom from "@/components/server-com";
 import Toggle from "@/components/toggle";
 import Locations from "@/components/locatons";
 import { ProductTable } from "@/components/product-table";
+import Products from "@/components/products";
 export default function HomePage() {
   const t = useTranslations("IndexPage");
 
@@ -13,12 +14,15 @@ export default function HomePage() {
     <ContentLayout title="Dashboard">
       <div>
         <h1>{t("title")}</h1>
+
+        <Products />
+
         <Link href={"/dashboard"}> Dashboard</Link>
 
-        <ProductTable />
+        {/* <ProductTable /> */}
 
         {/* <ClientCom /> */}
-        <Locations />
+        {/* <Locations /> */}
         {/* <p>{t("description")}</p> */}
         <p className="max-w-[590px]">
           {t.rich("description", {

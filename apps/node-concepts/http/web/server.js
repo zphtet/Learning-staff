@@ -14,6 +14,13 @@ app.route("GET", "/app.js", (req, res) => {
   res.status(200).sendFile("./public/app.js", "text/javascript");
 });
 
+app.route("GET", "/api/users", (req, res) => {
+  res.status(200).json([
+    { id: 1, name: "John Doe" },
+    { id: 2, name: "Jane Doe" },
+  ]);
+});
+
 // app.route("GET", "/", (req, res) => {
 //   res.status(200).sendFile("./public/style.css", "text/css");
 // });

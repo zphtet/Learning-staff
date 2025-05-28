@@ -31,6 +31,28 @@ class Butter {
 
       res.json = (data) => json(data, res);
 
+      // console.log("req", req);
+
+      if (req.method === "POST" || req.method === "PUT") {
+        let body = "";
+        req.on("data", (chunk) => {
+          body += chunk.toString("utf-8");
+          console.log("Body", body);
+        });
+        req.on("end", () => {
+          req.body = JSON.parse(body);
+
+          console.log("Req.body", req.body);
+          if (this.routes[req.method + req.url]) {
+            this.routes[req.method + req.url](req, res);
+          } else {
+            res.status(404).sendFile("./public/404.html", "text/html");
+          }
+        });
+
+        return;
+      }
+
       if (this.routes[req.method + req.url]) {
         this.routes[req.method + req.url](req, res);
       } else {

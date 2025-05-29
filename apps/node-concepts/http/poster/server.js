@@ -96,7 +96,7 @@ app.route("POST", "/api/login", (req, res) => {
 });
 
 app.route("GET", "/api/user", (req, res) => {
-  const token = req.headers.cookie?.split("=")[1];
+  const token = req.cookies.token;
   const session = SESSIONS.find((session) => session.token === token);
   if (session) {
     res.status(200).json(session.user);

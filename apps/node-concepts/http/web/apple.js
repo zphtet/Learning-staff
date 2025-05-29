@@ -15,6 +15,15 @@ function json(data, res) {
   return res;
 }
 
+function parseCookies(cookieString) {
+  if (!cookieString) return {};
+
+  return cookieString.split(";").reduce((acc, cookie) => {
+    const [key, ...val] = cookie.trim().split("=");
+    acc[key] = val.join("=");
+    return acc;
+  }, {});
+}
 class Butter {
   constructor() {
     this.server = http.createServer();
@@ -32,6 +41,13 @@ class Butter {
       res.json = (data) => json(data, res);
 
       // console.log("req", req);
+      console.log(
+        "req.headers.cookie",
+        req.headers.cookie,
+        typeof req.headers.cookie,
+      );
+
+      req.cookies = parseCookies(req.headers.cookie);
 
       if (req.method === "POST" || req.method === "PUT") {
         let body = "";

@@ -30,6 +30,8 @@ class Butter {
 
     this.routes = {};
 
+    this.middlewares = [];
+
     this.server.on("request", (req, res) => {
       console.log("Request Come in", req.url, req.method);
       res.sendFile = (filePath, type) => sendFile(filePath, type, res);
@@ -41,11 +43,11 @@ class Butter {
       res.json = (data) => json(data, res);
 
       // console.log("req", req);
-      console.log(
-        "req.headers.cookie",
-        req.headers.cookie,
-        typeof req.headers.cookie,
-      );
+      // console.log(
+      //   "req.headers.cookie",
+      //   req.headers.cookie,
+      //   typeof req.headers.cookie,
+      // );
 
       req.cookies = parseCookies(req.headers.cookie);
 
@@ -69,8 +71,18 @@ class Butter {
         return;
       }
 
+      const runMiddlewares = (req, res , middlewares , index)=>{
+            
+        if(index === middlewares.length){
+          this.routes[req.method + req.url](req, res);
+            return;
+        }
+        const middleware = middlewares[index];
+        middleware(req, res, ()=>runMiddlewares(req, res, middlewares, index + 1));
+      }
+
       if (this.routes[req.method + req.url]) {
-        this.routes[req.method + req.url](req, res);
+        runMiddlewares(req, res, this.middlewares, 0);
       } else {
         res.status(404).sendFile("./public/404.html", "text/html");
       }
@@ -81,6 +93,12 @@ class Butter {
 
   route(method, path, cb) {
     this.routes[method + path] = cb;
+  }
+
+
+
+  use(cb) {
+    this.middlewares.push(cb);
   }
 
   listen(port, cb) {

@@ -56,6 +56,23 @@ const POSTS = [
 
 let SESSIONS = [];
 
+app.use((req, res, next) => {
+  console.log(" first middleware middleware");
+  next();
+});
+
+app.use((req, res, next) => {
+  console.log(" second middleware middleware");
+  next();
+});
+
+app.use((req, res, next) => {
+  setTimeout(() => {
+    console.log(" third middleware middleware");
+    next();
+  }, 2000);
+});
+
 app.route("GET", "/", (req, res) => {
   res.status(200).sendFile("./public/index.html", "text/html");
 });
@@ -84,10 +101,13 @@ app.route("POST", "/api/login", (req, res) => {
   const user = USERS.find(
     (user) => user.username === username && user.password === password,
   );
+
+  console.log("found user", user);
   const token = Math.random().toString(36).substring(2, 15);
   if (user) {
     SESSIONS.push({ token, user });
     res.setHeader("Set-Cookie", `token=${token}; Path=/;`);
+    console.log("coookie set")
     res.status(200).json({ message: "Login successful" });
   } else {
     res.status(401).json({ message: "Invalid username or password" });

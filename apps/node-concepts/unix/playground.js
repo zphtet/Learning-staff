@@ -1,13 +1,24 @@
 
 
-const {spawn , exec} = require('node:child_process')
+// const {spawn , exec} = require('node:child_process')
+
+const  { stdin , stdout , stderr} = require('node:process')
 
 
-const subprocess =  spawn('/Applications/Telegram.app/Contents/MacOS/Telegram')
+stdin.on('data',(data)=>{
 
-subprocess.stdout.on('data',(data)=>{
-  console.log(data.toString('utf-8'))
+    console.log("stdin data " + data.toString('utf-8'))
 })
+
+
+// stdout.write('Enter your name : ');
+// stderr.write('error message ');
+
+// const subprocess =  spawn('/Applications/Telegram.app/Contents/MacOS/Telegram')
+
+// subprocess.stdout.on('data',(data)=>{
+//   console.log(data.toString('utf-8'))
+// })
 
 // | sort | uniq | wc -l
 

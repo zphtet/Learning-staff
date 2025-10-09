@@ -19,23 +19,49 @@ function submitBatchTasks(startIdx , endIdx){
 
    for(let i = startIdx ; i < endIdx; i++){
     batchTaskCount++
-    pool.submit('generatePrimes', {start : 10_000_000_000 + (i * 500),count : 20 , format : true , log : false},(result)=>{
-        completedTasks++
-        batchTaskCount--
-        totalResult.push(...result)
 
-        // whe all task are done
-        if(completedTasks === TotalTasks){
-            console.log("all tasks completed" , totalResult.sort())
-            console.log("time taken", performance.now() - startTime)
-            process.exit(0)
-        }
-        if(batchTaskCount === 0 ){
-             batchIndex++
-             console.log('submitting next batch')
-             submitNextBatchTasks()
-        }
-    })
+    if(i % 5 === 0){
+        pool.submit('factorial', {n : i},(result)=>{
+            completedTasks++
+            batchTaskCount--
+            // totalResult.push(...result)
+
+            console.log(`factorial of ${i} is ${result}`)
+    
+            // whe all task are done
+            if(completedTasks === TotalTasks){
+                // console.log("all tasks completed" , totalResult.sort())
+                console.log("time taken", performance.now() - startTime)
+                process.exit(0)
+            }
+            if(batchTaskCount === 0 ){
+                 batchIndex++
+                 console.log('submitting next batch')
+                 submitNextBatchTasks()
+            }
+        })
+
+    }else{
+
+        pool.submit('generatePrimes', {start : 10_000_000_000 + (i * 500),count : 20 , format : true , log : false},(result)=>{
+            completedTasks++
+            batchTaskCount--
+            totalResult.push(...result)
+    
+            // whe all task are done
+            if(completedTasks === TotalTasks){
+                console.log("all tasks completed" , totalResult.sort())
+                console.log("time taken", performance.now() - startTime)
+                process.exit(0)
+            }
+            if(batchTaskCount === 0 ){
+                 batchIndex++
+                 console.log('submitting next batch')
+                 submitNextBatchTasks()
+            }
+        })
+    }
+   
 }
 } 
 

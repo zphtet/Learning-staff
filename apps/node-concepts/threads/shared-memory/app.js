@@ -4,7 +4,8 @@ const { Buffer} = require("node:buffer")
 
 
 
-const data = Buffer.from(new SharedArrayBuffer(8))
+// const data = Buffer.from(new SharedArrayBuffer(8))
+const data = new Uint8Array(new SharedArrayBuffer(8))
 
 const THREADS = 8;
 
